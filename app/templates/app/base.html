@@ -11,33 +11,31 @@
   <title>ブログチュートリアル</title>
 </head>
 <body>
-  <nav class="navber navber-expand-lg navber-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navber-brand" href="/">ブログ</a>
-      <ul class="navber-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">ホーム</a>
-        </li>
-        <!-- ユーザーがログイン状態か判定する -->
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="">投稿</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">ログアウト</a>
-          </li>
-          <!-- ログアウト状態の為、elseになる？ -->
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="">サインアップ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">ログイン</a>
-          </li>
-        {% endif %}
-      </ul>
+        <a class="navbar-brand" href="/">ブログ</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">ホーム</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_new' %}">投稿</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">ログアウト</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">サインアップ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">ログイン</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
-  </nav>
+</nav>
 
   <main>
     <div class="container">
@@ -51,5 +49,6 @@
   </footer>
 
   {% block extra_js %}
+  {% endblock %}
 </body>
 </html>
